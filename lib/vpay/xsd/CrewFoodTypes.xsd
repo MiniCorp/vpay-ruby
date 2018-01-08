@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.RetailinMotion.com/crewfood/types/"
+	targetNamespace="http://www.RetailinMotion.com/crewfood/types/"
+	elementFormDefault="unqualified"
+	attributeFormDefault="unqualified"
+	version="1.0.0">
+	
+	<xsd:simpleType name="stringNonEmpty">
+		<xsd:restriction base="xsd:string">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="stringmin32">
+		<xsd:restriction base="stringNonEmpty">
+			<xsd:minLength value="32"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="partialPan">
+		<xsd:restriction base="xsd:string">
+		<xsd:pattern value="[A-Z0-9]{2}\d{4}\*{5,12}\d{4}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	
+	<xsd:simpleType name="intAmount">
+	  <xsd:restriction base="xsd:int">
+	    <xsd:minInclusive value="1"/>
+	    <xsd:maxInclusive value="99999"/>
+	    <xsd:pattern value="[0-9]*"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="bool">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="True"/>
+			<xsd:enumeration value="False"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	
+	<xsd:simpleType name="stringCurrency">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="EUR" />			
+		</xsd:restriction>	
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="messageType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="GetPublicKey" />
+			<xsd:enumeration value="ProcessPayment" />
+			<xsd:enumeration value="TokenResponse" />
+			<xsd:enumeration value="CancelCard" />
+		</xsd:restriction>	
+	</xsd:simpleType>
+	
+	
+	
+</xsd:schema>	

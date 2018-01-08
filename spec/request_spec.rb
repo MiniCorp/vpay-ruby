@@ -16,7 +16,7 @@ describe "Vpay::Request" do
       )
 
       allow(@request).to receive(:request_guid).and_return(@request_guid)
-      allow(@request).to receive(:encrypted).and_return("encrypted")
+      allow(@request).to receive(:encrypt).and_return("encrypted")
 
       expected_xml =
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -44,7 +44,7 @@ describe "Vpay::Request" do
       )
 
       allow(@request).to receive(:request_guid).and_return(@request_guid)
-      allow(@request).to receive(:encrypted).and_return("encrypted")
+      allow(@request).to receive(:encrypt).and_return("encrypted")
 
       expected_xml =
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +

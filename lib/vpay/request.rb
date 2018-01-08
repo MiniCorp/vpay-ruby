@@ -16,20 +16,16 @@ module Vpay
     end
 
     def process!(path)
-      Vpay::Response.new_from_xml(
+      Vpay::Response.new(
         Vpay::Client.call(base_url, path, use_ssl, to_xml)
       )
     end
 
     protected
 
-    def encrypted(text)
-      begin
-        key = OpenSSL::PKey::RSA.new(public_key)
-        Base64.strict_encode64(key.public_encrypt(text))
-      rescue OpenSSL::PKey::RSAError => error
-        raise EncryptionError.new("Invalid public key")
-      end
+    def encrypt(text)
+      key = OpenSSL::PKey::RSA.new(public_key)
+      Base64.strict_encode64(key.public_encrypt(text))
     end
 
     def request_guid
@@ -58,7 +54,7 @@ module Vpay
         r.requestGUID request_guid
       end
 
-      response = Vpay::Response.new_from_xml(
+      response = Vpay::Response.new(
         Vpay::Client.call(base_url, '/LHCrewFood/Key/Get', use_ssl, xml)
       )
 
@@ -78,8 +74,8 @@ module Vpay
         r.requestType "CancelCard"
         r.requestGUID request_guid
         r.requestCancelToken { |rct|
-          rct.uNumber encrypted(u_number)
-          rct.token encrypted(token)
+          rct.uNumber encrypt(u_number)
+          rct.token encrypt(token)
         }
       end
     end
@@ -101,10 +97,10 @@ module Vpay
         r.requestType "ProcessPayment"
         r.requestGUID request_guid
         r.requestPayment { |rp|
-          rp.uNumber encrypted(u_number)
+          rp.uNumber encrypt(u_number)
           rp.amount amount
           rp.currency currency
-          rp.token encrypted(token)
+          rp.token encrypt(token)
         }
       end
     end

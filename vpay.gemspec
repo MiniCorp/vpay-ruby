@@ -7,6 +7,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Steve Thornton"]
   s.email       = 'steve@minicorp.ie'
   s.files = [
+    "lib/vpay/xsd/CrewFood.xsd",
+    "lib/vpay/xsd/CrewFoodTypes.xsd",
     "lib/vpay/client.rb",
     "lib/vpay/config.rb",
     "lib/vpay/initializer.rb",

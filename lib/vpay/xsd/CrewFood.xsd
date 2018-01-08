@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://www.RetailinMotion.com/crewfood/"
+	xmlns:types="http://www.RetailinMotion.com/crewfood/types/"
+	targetNamespace="http://www.RetailinMotion.com/crewfood/"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="1.0.0">
+
+<xsd:import namespace="http://www.RetailinMotion.com/crewfood/types/" schemaLocation="CrewFoodTypes.xsd"/>
+<xsd:element name="crewFood" type="crewFood"/>
+
+<xsd:complexType name="crewFood">
+	<xsd:sequence>
+		<xsd:choice>
+			<xsd:element name="crewFoodRequest" type="crewFoodRequest" maxOccurs="1"/>
+			<xsd:element name="crewFoodResponse" type="crewFoodResponse" maxOccurs="1"/>
+		</xsd:choice>
+	</xsd:sequence>
+</xsd:complexType>
+
+
+<xsd:complexType name="crewFoodRequest">
+	<xsd:sequence>
+		<xsd:element name="requestType" type="types:messageType" />
+		<xsd:element name="requestGUID" type="types:stringmin32" />
+		<xsd:element name="requestPayment" type="requestPayment" minOccurs="0"/>
+		<xsd:element name="requestCancelToken" type="requestCancelToken" minOccurs="0"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+
+<xsd:complexType name="crewFoodResponse">
+	<xsd:sequence>
+		<xsd:element name="responseType" type="types:messageType" />
+		<xsd:element name="requestGUID" type="types:stringmin32" />
+		<xsd:element name="responseGUID" type="types:stringmin32" />
+		<xsd:element name="responseErrorcode" type="xsd:integer" />
+		<xsd:element name="responseMessage" type="types:stringNonEmpty" />
+		<xsd:element name="responseToken" type="responseToken" minOccurs="0" />
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="responseToken">
+	<xsd:sequence>
+		<xsd:element name="uNumber" type="xsd:string" />
+		<xsd:element name="token" type="types:stringmin32" />
+		<xsd:element name="partialPAN" type="types:partialPan" /> <!-- this is the first 6, followed by astrixes, then last 4 of the PAN -->
+	  <xsd:element name="paymentType" type="xsd:string" />
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="requestCancelToken">
+	<xsd:sequence>
+		<xsd:element name="uNumber" type="xsd:string" />
+		<xsd:element name="token" type="types:stringmin32" />
+	</xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="requestPayment">
+	<xsd:sequence>
+		<xsd:element name="uNumber" type="xsd:string" />
+		<xsd:element name="amount" type="types:intAmount" />
+		<xsd:element name="currency" type="types:stringCurrency" />
+		<xsd:element name="token" type="types:stringmin32" />
+	</xsd:sequence>
+</xsd:complexType>
+
+
+
+</xsd:schema>
