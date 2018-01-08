@@ -1,7 +1,6 @@
 require 'nokogiri'
 require 'net/https'
 require 'builder'
-require 'byebug'
 
 $:.unshift(File.dirname(__FILE__))
 require 'vpay/initializer'
