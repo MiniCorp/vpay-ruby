@@ -10,7 +10,3 @@ require 'vpay/client'
 
 require 'vpay/request'
 require 'vpay/response'
-
-module RealEx
-  class UnknownError < StandardError; end
-end
