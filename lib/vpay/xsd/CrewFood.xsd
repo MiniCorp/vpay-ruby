@@ -7,7 +7,7 @@
 	attributeFormDefault="unqualified"
 	version="1.0.0">
 
-<xsd:import namespace="http://www.RetailinMotion.com/crewfood/types/" schemaLocation="CrewFoodTypes.xsd"/>
+<xsd:import namespace="http://www.RetailinMotion.com/crewfood/types/" schemaLocation="CrewFoodTypes.xsd"/>	
 <xsd:element name="crewFood" type="crewFood"/>
 
 <xsd:complexType name="crewFood">
@@ -15,7 +15,7 @@
 		<xsd:choice>
 			<xsd:element name="crewFoodRequest" type="crewFoodRequest" maxOccurs="1"/>
 			<xsd:element name="crewFoodResponse" type="crewFoodResponse" maxOccurs="1"/>
-		</xsd:choice>
+		</xsd:choice>		
 	</xsd:sequence>
 </xsd:complexType>
 
@@ -68,4 +68,4 @@
 
 
 
-</xsd:schema>
+</xsd:schema>	
