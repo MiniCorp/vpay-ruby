@@ -63,6 +63,7 @@
 		<xsd:element name="amount" type="types:intAmount" />
 		<xsd:element name="currency" type="types:stringCurrency" />
 		<xsd:element name="token" type="types:stringmin32" />
+	  <xsd:element name="airportCode" type="xsd:string" />
 	</xsd:sequence>
 </xsd:complexType>
 

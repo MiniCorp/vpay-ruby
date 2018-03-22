@@ -86,7 +86,7 @@ module Vpay
   end
 
   class ProcessPaymentRequest < Request
-    attributes :u_number, :token, :amount
+    attributes :u_number, :token, :amount, :airport_code
 
     def initialize(hash = {})
       super(hash)
@@ -101,6 +101,7 @@ module Vpay
           rp.amount amount
           rp.currency currency
           rp.token encrypt(token)
+          rp.airportCode airport_code
         }
       end
     end
