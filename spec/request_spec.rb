@@ -5,6 +5,7 @@ describe "Vpay::Request" do
     @u_number = "steve@minicorp.ie"
     @amount = 1000
     @token = "4455579a-8a01-445e-933c-4edf16e3eaeb"
+    @airport_code = "MUC"
     @request_guid = "b5c564a5-4feb-4500-b004-abba3bf622bb"
   end
 
@@ -40,7 +41,8 @@ describe "Vpay::Request" do
       @request = Vpay::ProcessPaymentRequest.new(
         u_number: @u_number,
         amount: @amount,
-        token: @token
+        token: @token,
+        airport_code: @airport_code
       )
 
       allow(@request).to receive(:request_guid).and_return(@request_guid)
@@ -54,9 +56,10 @@ describe "Vpay::Request" do
         "    <requestGUID>#{ @request_guid }</requestGUID>\n" +
         "    <requestPayment>\n" +
         "      <uNumber>encrypted</uNumber>\n" +
-        "      <amount>1000</amount>\n" +
+        "      <amount>#{@amount}</amount>\n" +
         "      <currency>EUR</currency>\n" +
         "      <token>encrypted</token>\n" +
+        "      <airportCode>#{@airport_code}</airportCode>\n" +
         "    </requestPayment>\n" +
         "  </crewFoodRequest>\n" +
         "</crewFood>\n"
