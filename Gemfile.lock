@@ -4,7 +4,7 @@ GEM
     builder (3.2.3)
     byebug (9.1.0)
     mini_portile2 (2.3.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
 
 PLATFORMS
