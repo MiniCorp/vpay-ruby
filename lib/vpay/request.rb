@@ -55,7 +55,6 @@ module Vpay
         r.requestGUID request_guid
       end
 
-      puts "PUBLIC_KEY_REQUEST: #{"#{is_dev ? '/LHCrewFood' : ''}/Key/Get"}"
       response = Vpay::Response.new(
         Vpay::Client.call(base_url, "#{is_dev ? '/LHCrewFood' : ''}/Key/Get", use_ssl, xml)
       )
@@ -83,7 +82,6 @@ module Vpay
     end
 
     def process!
-      puts "CANCEL_REQUEST: #{is_dev ? '/LHCrewFood' : ''}/Token/Cancel"
       super "#{is_dev ? '/LHCrewFood' : ''}/Token/Cancel"
     end
   end
@@ -110,7 +108,6 @@ module Vpay
     end
 
     def process!
-      puts "PROCESS_PAYMENT_REQUEST: #{is_dev ? '/LHCrewFood' : ''}/Token/ProcessPayment"
       super "#{is_dev ? '/LHCrewFood' : ''}/Token/ProcessPayment"
     end
   end
