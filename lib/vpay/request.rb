@@ -55,7 +55,7 @@ module Vpay
       end
 
       response = Vpay::Response.new(
-        Vpay::Client.call(base_url, '/LHCrewFood/Key/Get', use_ssl, xml)
+        Vpay::Client.call(base_url, '/Key/Get', use_ssl, xml)
       )
 
       response.message
@@ -81,7 +81,7 @@ module Vpay
     end
 
     def process!
-      super '/LHCrewFood/Token/Cancel'
+      super '/Token/Cancel'
     end
   end
 
@@ -106,7 +106,7 @@ module Vpay
     end
 
     def process!
-      super '/LHCrewFood/Token/ProcessPayment'
+      super '/Token/ProcessPayment'
     end
   end
 end
