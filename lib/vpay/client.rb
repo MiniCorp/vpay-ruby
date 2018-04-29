@@ -18,6 +18,9 @@ module Vpay
       end
 
       def call(base_url, path, use_ssl, xml)
+        puts "BASE_URL: #{base_url}"
+        puts "PATH: #{path}"
+        puts "USE_SSL: #{use_ssl}"
         h = Net::HTTP.new(base_url, use_ssl ? 443 : 80)
         h.use_ssl = use_ssl
         response = h.request_post(path, xml, {'Content-Type' =>'application/xml'})

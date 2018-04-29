@@ -6,11 +6,12 @@ module Vpay
   class Request
     include Initializer
 
-    attributes :base_url, :use_ssl, :currency
+    attributes :base_url, :is_dev, :use_ssl, :currency
 
     def initialize(hash = {})
       super(hash)
       self.base_url ||= Vpay::Config.base_url || '0.0.0.0'
+      self.is_dev ||= Vpay::Config.is_dev || true
       self.use_ssl ||= Vpay::Config.use_ssl || false
       self.currency ||= Vpay::Config.currency || 'EUR'
     end
@@ -54,8 +55,9 @@ module Vpay
         r.requestGUID request_guid
       end
 
+      puts "PUBLIC_KEY_REQUEST: #{"#{is_dev ? '/LHCrewFood' : ''}/Key/Get"}"
       response = Vpay::Response.new(
-        Vpay::Client.call(base_url, '/Key/Get', use_ssl, xml)
+        Vpay::Client.call(base_url, "#{is_dev ? '/LHCrewFood' : ''}/Key/Get", use_ssl, xml)
       )
 
       response.message
@@ -81,7 +83,8 @@ module Vpay
     end
 
     def process!
-      super '/Token/Cancel'
+      puts "CANCEL_REQUEST: #{is_dev ? '/LHCrewFood' : ''}/Token/Cancel"
+      super "#{is_dev ? '/LHCrewFood' : ''}/Token/Cancel"
     end
   end
 
@@ -107,7 +110,8 @@ module Vpay
     end
 
     def process!
-      super '/Token/ProcessPayment'
+      puts "PROCESS_PAYMENT_REQUEST: #{is_dev ? '/LHCrewFood' : ''}/Token/ProcessPayment"
+      super "#{is_dev ? '/LHCrewFood' : ''}/Token/ProcessPayment"
     end
   end
 end
