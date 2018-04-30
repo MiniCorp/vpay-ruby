@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'vpay'
-  s.version     = '0.1.3'
+  s.version     = '0.1.4'
   s.date        = '2018-02-02'
   s.summary     = "vPAY"
   s.description = "A Ruby library to make use of the vPAY API."
