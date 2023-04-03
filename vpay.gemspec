@@ -1,11 +1,11 @@
 Gem::Specification.new do |s|
   s.name        = 'vpay'
-  s.version     = '0.1.4'
-  s.date        = '2018-02-02'
+  s.version     = '0.1.5'
+  s.date        = '2023-04-03'
   s.summary     = "vPAY"
   s.description = "A Ruby library to make use of the vPAY API."
-  s.authors     = ["Steve Thornton"]
-  s.email       = 'steve@minicorp.ie'
+  s.authors     = ["Brian Kenny"]
+  s.email       = 'brian@minicorphq.com'
   s.files = [
     "lib/vpay/xsd/CrewFood.xsd",
     "lib/vpay/xsd/CrewFoodTypes.xsd",
@@ -21,6 +21,6 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb",
     "spec/request_spec.rb"
   ]
-  s.homepage    = 'https://minicorp.ie'
+  s.homepage    = 'https://minicorphq.com'
   s.license     = 'MIT'
 end
