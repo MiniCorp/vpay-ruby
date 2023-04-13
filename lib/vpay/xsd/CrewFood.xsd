@@ -45,7 +45,7 @@
 	<xsd:sequence>
 		<xsd:element name="uNumber" type="xsd:string" />
 		<xsd:element name="token" type="types:stringmin32" />
-		<xsd:element name="partialPAN" type="types:partialPan" /> <!-- this is the first 6, followed by astrixes, then last 4 of the PAN -->
+		<xsd:element name="partialPAN" type="types:stringNonEmpty" /> <!-- this is the first 6, followed by astrixes, then last 4 of the PAN -->
 	  <xsd:element name="paymentType" type="xsd:string" />
   </xsd:sequence>
 </xsd:complexType>
